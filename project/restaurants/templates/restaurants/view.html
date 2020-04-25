@@ -12,9 +12,12 @@
     <hr>
     <h3>menu</h3>
     {% if restaurant.menus %}
-        {% for menu in restaurant.menus %}
-            <p>{{menu}}</p>
-        {% endfor %}
+        <ul>
+            {% for menu in restaurant.menus %}
+                <li><a href="{{ url_for('menus.view',id=menu.id) }}">{{menu}}</a></li>
+            {% endfor %}
+        </ul>
+        
     {% else %}
         <p>no menu</p>
     {% endif %}

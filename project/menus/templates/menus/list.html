@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block main %}
+<section>
+    <h2>menu list</h2>
+    {% if menus %}
+        <ul>
+            {% for menu in menus %}
+                <li><a href="{{ url_for('menus.view',id=menu.id) }}">{{menu}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>no menu</p>
+    {% endif %}
+</section>
+{% endblock %}
