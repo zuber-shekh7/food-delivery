@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block main %}
+<section>
+    <h2>{{restaurant.name}}</h2>
+    <ul>
+        <li>{{restaurant.name}}</li>
+        <li>{{restaurant.owner}}</li>
+        <li>{{restaurant.mobile}}</li>
+        <li>{{restaurant.license}}</li>
+    </ul>
+    <hr>
+    <h3>menu</h3>
+    {% if restaurant.menus %}
+        {% for menu in restaurant.menus %}
+            <p>{{menu}}</p>
+        {% endfor %}
+    {% else %}
+        <p>no menu</p>
+    {% endif %}
+</section>
+{% endblock %}

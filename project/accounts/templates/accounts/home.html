@@ -5,8 +5,13 @@
     <h2>welcome {{current_user.email}}</h2> 
     <hr>
     <ul>
-        <li><a href="#">sell online</a></li>
-        <li><a href="#">become delivery agent</a></li>
+        {% if current_user.restaurants %}
+            <li><a href="#">{{current_user.restaurants[0].name}}</a></li>
+        {% else %}
+            <li><a href="#">sell online</a></li>
+            <li><a href="#">become delivery agent</a></li>
+        {% endif %}
+        
     </ul>
 </section>
 {% endblock %}
