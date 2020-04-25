@@ -9,4 +9,11 @@
         <li><a href="{{ url_for('restaurants.index') }}">restaurants</a></li>
     </ul>
 </section>
+<section>
+    <ul>
+        <li><a href="{{url_for('accounts.signup',type='user')}}">user</a></li>
+        <li><a href="{{url_for('accounts.signup',type='restaurant')}}">restaurant</a></li>
+        <li><a href="{{url_for('accounts.signup',type='delivery agent')}}">delivery</a></li>
+    </ul>
+</section>
 {% endblock %}

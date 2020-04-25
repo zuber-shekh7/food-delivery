@@ -25,19 +25,21 @@ def login():
 @accounts.route('/signup',methods=['GET','POST'])
 def signup():
     form = SignupForm()
+    form.type.data = request.args.get('type')
     if form.validate_on_submit():
         user = User(
             form.email.data,
             form.password.data,
             form.fname.data,
             form.lname.data,
-            form.mobile.data
+            form.mobile.data,
+            form.type.data,
         )
         db.session.add(user)    
         db.session.commit()
         flash('user created successfull')
         return redirect(url_for('accounts.login'))
-    return render_template('accounts/signup.html',form=form)
+    return render_template('accounts/signup.html',form=form,type=type)
 
 @accounts.route('/home')
 def home():
