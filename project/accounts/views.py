@@ -41,9 +41,16 @@ def signup():
         return redirect(url_for('accounts.login'))
     return render_template('accounts/signup.html',form=form,type=type)
 
+
 @accounts.route('/home')
 def home():
-    return render_template('accounts/home.html')
+    if current_user.type == 'user':
+        return render_template('accounts/home.html')
+    elif current_user.type == 'restaurant':
+        return render_template('accounts/user_restaurant.html')
+    else:
+        return render_template('accounts/user_delivery.html')
+
 
 @accounts.route('/logout')
 def logout():

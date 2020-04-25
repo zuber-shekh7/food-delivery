@@ -4,6 +4,10 @@
 <section>
     <h2>welcome {{current_user.type}} {{current_user.email}}</h2>
     <hr>
-    <a href="{{url_for('restaurants.index')}}">restaurants</a>
+    {% if current_user.restaurant %}
+        <a href="">{{current_user.restaurant}}</a>
+    {% else %}
+        <a href="#">add restaurant</a>
+    {% endif %}
 </section>
 {% endblock %}
