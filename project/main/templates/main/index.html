@@ -1,9 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-    <h2>welcome to OnlineFoodDeliveryApp</h2>
-</section>
+<div class="row mt-2">
+    <div class="col-md-8 mx-auto">
+        <section class="container">
+            <div class="jumbotron text-center">
+                <h2 class="text-capitalize">welcome to Online Food Delivery App</h2>
+            </div>    
+        </section>
+    </div>
+</div>
+
 <section>
     <ul>
         <li><a href="{{ url_for('restaurants.index') }}">restaurants</a></li>
