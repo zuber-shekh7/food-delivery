@@ -1,9 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-    <h2>welcome {{current_user.type}} {{current_user.email}}</h2>
-    <hr>
-    <a href="{{url_for('restaurants.index')}}">restaurants</a>
-</section>
+<div class="row mt-2">
+    <div class="col-md-8 mx-auto">
+        <section class="container text-uppercase">
+            <div class="jumbotron">
+                <h2>welcome {{current_user.email}}</h2>
+                <hr>
+                <a href="{{url_for('restaurants.index')}}">restaurants</a>
+            </div>
+        </section>
+    </div>
+</div>
+
 {% endblock %}

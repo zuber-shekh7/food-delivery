@@ -1,14 +1,18 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-    <h2>login page</h2>
-    <form action="" method='POST'>
-        {% for field in form %}
-            {{field.label}}
-            <p>{{field()}}</p>
-        {% endfor %}
-        <input type="submit" value="login">
-    </form>
-</section>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <section class="container text-uppercase">
+            <h2 class="text-center">login page</h2>
+            <form action="" method='POST'>
+                {% for field in form %}
+                    {{field.label(class='form-label')}}
+                    <p>{{field(class='form-control')}}</p>
+                {% endfor %}
+                <input type="submit" class="btn btn-primary btn-block text-uppercase" value="login">
+            </form>
+        </section>
+    </div>
+</div>
 {% endblock %}
