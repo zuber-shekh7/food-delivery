@@ -11,6 +11,7 @@
                 <li>{{item.quantity}} {% if item.unit!='number' %}{{item.unit}}{%endif%}</li>
                 <li>{% if item.type %}yes{%else%}no{%endif%}</li>
                 <li>{{item.is_avaiable}}</li>
+                <li><a class="btn btn-danger btn-sm" href="{{url_for('cart.add',id=item.id)}}">add to cart</a></li>
             </ul>
          </section>
     </div>

@@ -11,7 +11,6 @@ restaurants = Blueprint('restaurants',__name__,url_prefix='/restaurants/',templa
 @restaurants.route('/')
 def index():
     restaurants = Restaurant.query.all()
-
     return render_template('restaurants/list.html',restaurants=restaurants)
 
 @restaurants.route('/restaurant/<int:id>')

@@ -1,16 +1,20 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-    <h2>restaurants</h2>
-    {% if restaurants %}
-        <ul>
-            {% for restaurant in restaurants %}
-                <li><a href="{{ url_for('restaurants.view',id=restaurant.id) }}">{{restaurant}}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>no restaurant avaliable</p>
-    {% endif %}
-</section>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <section class="container text-uppercase">
+            <h2>restaurants</h2>
+            {% if restaurants %}
+                <ul>
+                    {% for restaurant in restaurants %}
+                        <li><a href="{{ url_for('restaurants.view',id=restaurant.id) }}">{{restaurant}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>no restaurant avaliable</p>
+            {% endif %}
+        </section>        
+    </div>
+</div>
 {% endblock %}
