@@ -16,6 +16,11 @@ def add(id):
     item = Item.query.get_or_404(id)
     if 'cart' not in session:
         session['cart']={}
+        session['restaurant']=None
+        
+    if session['restaurant'] and session['restaurant']!=item.menu.restaurant.id:
+        session['cart'].clear()
+    
     if item.name in session['cart'].keys():
         session['cart'][item.name]['quantity'] += 1
         session['cart'][item.name]['price'] += item.price
@@ -23,9 +28,9 @@ def add(id):
         session['cart'][item.name] = {
             'name': item.name,
             'price' : item.price,
-            'quantity' : item.quantity,
-            'restaurant' : item.menu.restaurant.id,
+            'quantity' : 1,
         }
+        session['restaurant'] = item.menu.restaurant.id
     return redirect(url_for('cart.index'))
 
 
