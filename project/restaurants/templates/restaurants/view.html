@@ -23,7 +23,9 @@
                 {% else %}
                     <p>no menu</p>
                 {% endif %}
-                <a class="btn btn-success" href="{{url_for('menus.new',rid=restaurant.id)}}">add menu</a>
+                {% if current_user.type=='restaurant' %}
+                    <a class="btn btn-success" href="{{url_for('menus.new',rid=restaurant.id)}}">add menu</a>
+                {% endif %}
             </div>
             
             

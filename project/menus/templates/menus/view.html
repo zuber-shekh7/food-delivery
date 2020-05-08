@@ -15,7 +15,9 @@
             {% else %}
                 <p>no item</p>
             {% endif %}
-            <a class="btn btn-success" href="{{url_for('items.new',mid=menu.id)}}">add item</a>
+            {% if current_user.type=='restaurant' %}
+                <a class="btn btn-success" href="{{url_for('items.new',mid=menu.id)}}">add item</a>
+            {% endif %}
         </section>
     </div>
 </div>

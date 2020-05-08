@@ -38,7 +38,7 @@ app.register_blueprint(items)
 from project.accounts import views
 from project.main import views
 from project.restaurants import views
-# from project.admin import views
+from project.admin import views
 from project.menus import views
 from project.items import views
 # from project.voice_assistant import views

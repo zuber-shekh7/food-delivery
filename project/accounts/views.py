@@ -2,6 +2,8 @@ from flask import Blueprint,render_template,url_for,redirect,flash,request
 from flask_login import login_user,logout_user,current_user
 from project.app import db
 
+from project.restaurants.models import Restaurant
+
 from .forms import LoginForm,SignupForm
 from .models import User
 
@@ -45,7 +47,8 @@ def signup():
 @accounts.route('/home')
 def home():
     if current_user.type == 'user':
-        return render_template('accounts/home.html')
+        restaurants = Restaurant.query.filter_by(is_open=True).all()
+        return render_template('accounts/home.html',restaurants=restaurants)
     elif current_user.type == 'restaurant':
         return render_template('accounts/user_restaurant.html')
     else:

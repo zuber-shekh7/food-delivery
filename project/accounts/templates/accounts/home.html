@@ -11,5 +11,21 @@
         </section>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md-8 mx-auto text-uppercase">
+        <section class="container">
+            {% if restaurants %}
+                <ul class="list-group">
+                    {% for restaurant in restaurants %}
+                        <li class="list-group-item"><a href="{{url_for('restaurants.view',id=restaurant.id)}}">{{restaurant}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-danger text-center">
+                    <p>no restaurant available now</p>
+                </div>
+            {% endif %}
+        </section>
+    </div>
+</div>
 {% endblock %}
