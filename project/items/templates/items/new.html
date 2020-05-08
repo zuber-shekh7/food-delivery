@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-6 mx-auto">
         <section class="container text-uppercase text-center">
-            <h2>signup page</h2>
+            <h2>create item</h2>
             <form action="" method='POST'>
                 {% for field in form %}
                     {{field.label(class='form-label')}}
@@ -13,9 +13,10 @@
                         <p>{{error}}</p>
                     {% endfor %}
                 {% endfor %}
-                <input type="submit" class="btn btn-primary btn-block text-uppercase" value="signup">
+                <input type="submit" class="btn btn-primary btn-block text-uppercase" value="create">
             </form>
         </section>
     </div>
 </div>
+
 {% endblock %}

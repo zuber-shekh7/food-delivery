@@ -1,25 +1,34 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-    <h2>{{restaurant.name}}</h2>
-    <ul>
-        <li>{{restaurant.name}}</li>
-        <li>{{restaurant.owner}}</li>
-        <li>{{restaurant.mobile}}</li>
-        <li>{{restaurant.license}}</li>
-    </ul>
-    <hr>
-    <h3>menu</h3>
-    {% if restaurant.menus %}
-        <ul>
-            {% for menu in restaurant.menus %}
-                <li><a href="{{ url_for('menus.view',id=menu.id) }}">{{menu}}</a></li>
-            {% endfor %}
-        </ul>
-        
-    {% else %}
-        <p>no menu</p>
-    {% endif %}
-</section>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <section class="container text-uppercase">
+            <div>
+                <h2>{{restaurant.name}}</h2>
+                <ul class="list-group">
+                    <li class="list-group-item" >name : {{restaurant.name}}</li>
+                    <li class="list-group-item" >license : {{restaurant.license}}</li>
+                    <li class="list-group-item" >owner : {{restaurant.owner}}</li>
+                </ul>
+            </div>
+            <div>
+                <h3>menu</h3>
+                {% if restaurant.menus %}
+                    <ul>
+                        {% for menu in restaurant.menus %}
+                            <li><a href="{{ url_for('menus.view',id=menu.id) }}">{{menu}}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>no menu</p>
+                {% endif %}
+                <a class="btn btn-success" href="{{url_for('menus.new',rid=restaurant.id)}}">add menu</a>
+            </div>
+            
+            
+        </section>
+    </div>
+</div>
+
 {% endblock %}

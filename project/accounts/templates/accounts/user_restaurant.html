@@ -8,13 +8,12 @@
                 <h2>welcome {{current_user.email}}</h2>
                 <hr>
                 {% if current_user.restaurant %}
-                    <a href="">{{current_user.restaurant}}</a>
+                    <a href="{{url_for('restaurants.view',id=current_user.restaurant[0].id)}}">{{current_user.restaurant[0]}}</a>
                 {% else %}
-                    <a href="#" class="btn btn-success">add restaurant</a>
+                    <a href="{{url_for('restaurants.new',uid=current_user.id)}}" class="btn btn-success">create restaurant</a>
                 {% endif %}
             </div>
         </section>
     </div>
 </div>
-
 {% endblock %}

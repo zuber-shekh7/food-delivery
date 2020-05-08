@@ -1,21 +1,23 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-    <h2>menu</h2>
-    <hr>
-    <ul>
-        <li><a href="{{ url_for('menus.view',id=menu.id) }}">{{menu.name}}</a></li>
-    </ul>
-    <hr>
-    {% if menu.items %}
-        <ul>
-            {% for item in menu.items %}
-                <li><a href="{{ url_for('items.view',id=item.id) }}">{{item}}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>no item</p>
-    {% endif %}
-</section>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <section class="container text-uppercase">
+            <h2>{{menu.name}}</h2>
+            <hr>
+            {% if menu.items %}
+                <ul>
+                    {% for item in menu.items %}
+                        <li><a href="{{ url_for('items.view',id=item.id) }}">{{item}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>no item</p>
+            {% endif %}
+            <a class="btn btn-success" href="{{url_for('items.new',mid=menu.id)}}">add item</a>
+        </section>
+    </div>
+</div>
+
 {% endblock %}

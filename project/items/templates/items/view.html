@@ -1,13 +1,18 @@
 {% extends 'main/base.html' %}
 
 {% block main %}
-<section>
-   <h2>{{item.name}}</h2>
-   <hr>
-   <ul>
-       <li>{{item.price}}</li>
-       <li>{{item.quantity}}</li>
-       <li>{{item.type}}</li>
-   </ul>
-</section>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <section class="container text-uppercase">
+            <h2>{{item.name}}</h2>
+            <hr>
+            <ul>
+                <li>{{item.price}}</li>
+                <li>{{item.quantity}} {% if item.unit!='number' %}{{item.unit}}{%endif%}</li>
+                <li>{% if item.type %}yes{%else%}no{%endif%}</li>
+                <li>{{item.is_avaiable}}</li>
+            </ul>
+         </section>
+    </div>
+</div>
 {% endblock %}

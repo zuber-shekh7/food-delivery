@@ -3,6 +3,7 @@ from flask_login import login_user,logout_user,current_user
 
 from project.app import db
 from .models import Menu
+from .forms import CreateMenuForm
 
 menus = Blueprint('menus',__name__,url_prefix='/menus/',template_folder='templates/')
 
@@ -16,3 +17,14 @@ menus = Blueprint('menus',__name__,url_prefix='/menus/',template_folder='templat
 def view(id):
     menu = Menu.query.get_or_404(id)
     return render_template('menus/view.html',menu=menu)
+
+@menus.route('<int:rid>/menu/new',methods=['GET','POST'])
+def new(rid):
+    form=CreateMenuForm()
+    if form.validate_on_submit():
+        menu = Menu(form.name.data,rid)
+        db.session.add(menu)
+        db.session.commit()
+        flash('menu created')
+        return redirect(url_for('menus.view',id=menu.id))
+    return render_template('menus/new.html',form=form)
